@@ -5,5 +5,6 @@ const requireLogin = require('../app/middleware/requireLogin');
 
 router.post('/', requireLogin, postController.create);
 router.get('/', postController.show);
+router.get('/myPosts', requireLogin, postController.myPost);
 
 module.exports = router;

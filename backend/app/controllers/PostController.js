@@ -1,5 +1,4 @@
 const createError = require('http-errors');
-const requireLogin = require('../middleware/requireLogin');
 const Post = require('../models/Post');
 
 class PostController {
@@ -38,6 +37,19 @@ class PostController {
             const postList = await Post.find().populate('postedBy', '_id name');
 
             res.json({postList});
+        } catch (error) {
+            return next(createError(500, error));
+        }
+    }
+
+    // [GET] /post/myPost
+    async myPost(req, res, next) {
+        try {
+            const myPostList = await Post
+                                        .find({postedBy: req.user._id})
+                                        .populate('postedBy', '_id name');
+
+            res.json({myPostList});
         } catch (error) {
             return next(createError(500, error));
         }
