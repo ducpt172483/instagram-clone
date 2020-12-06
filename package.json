@@ -1,0 +1,39 @@
+{
+  "name": "instagram-clone",
+  "version": "1.0.0",
+  "description": "nodejs hust-pham-tien-duc",
+  "main": "backend/index.js",
+  "scripts": {
+    "dev": "nodemon backend/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ducpt172483/instagram-clone.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "reactjs",
+    "instagram-clone"
+  ],
+  "author": "hust-pham-tien-duc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ducpt172483/instagram-clone/issues"
+  },
+  "homepage": "https://github.com/ducpt172483/instagram-clone#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.4"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6"
+  }
+}
