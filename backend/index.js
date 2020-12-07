@@ -9,6 +9,7 @@ const port = process.env.PORT || 8080;
 
 const route = require('./routes');
 const db = require('./config/db');
+// const {handleError} = require('./helpers/error');
 
 // Connect to DB
 db.connect();
@@ -24,10 +25,15 @@ app.use(morgan('dev'));
 
 app.use(cors());
 
+
 // Routes init 
 route(app);
 
-/// catch 404 and forward to error handler
+// app.use((err, req, res, next) => {
+//     handleError(err, res);
+// });
+
+// catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError.NotFound('This route does not exist'));
 });

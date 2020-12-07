@@ -20,7 +20,7 @@ class AuthController {
         } = req.body;
 
         if (!email || !name || !password) {
-            return next(createError(422, 'Vui lòng nhập đầy đủ thông tin.'));
+            return next(createError(400, 'Vui lòng nhập đầy đủ thông tin.'));
         }
 
         try {
@@ -29,7 +29,7 @@ class AuthController {
             });
 
             if (savedUser) {
-                return next(createError(422, 'Tài khoản này đã tồn tại.'));
+                return next(createError(400, 'Email này đã tồn tại.'));
             }
 
             password = await bcrypt.hash(password, saltRounds);
@@ -43,7 +43,7 @@ class AuthController {
             await newUser.save();
 
             res.json({
-                message: 'User saved successfully.'
+                newUser
             })
         } catch (error) {
             return next(createError(500, error));
@@ -55,7 +55,7 @@ class AuthController {
         let { email, password } = req.body;
 
         if(!email || !password) {
-            return next(createError(422, 'Vui lòng nhập email/password'));
+            return next(createError(400, 'Vui lòng nhập email/password'));
         }
 
         try {
@@ -64,7 +64,7 @@ class AuthController {
             });
 
             if (!savedUser) {
-                return next(createError(422, 'Email hoặc mật khẩu không chính xác.'));
+                return next(createError(400, 'Email hoặc mật khẩu không chính xác.'));
             }
 
             const isMatch = await bcrypt.compare(password, savedUser.password);
@@ -73,7 +73,7 @@ class AuthController {
                 const accessToken = await jwt.sign({ _id: savedUser._id }, process.env.JWT_SECRET_FOR_ACCESS_TOKEN);
                 res.json({accessToken})
             } else {
-                return next(createError(422, 'Email hoặc mật khẩu không chính xác.'));
+                return next(createError(400, 'Email hoặc mật khẩu không chính xác.'));
             }
         } catch (error) {
             return next(createError(500, error));

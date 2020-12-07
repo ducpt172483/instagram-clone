@@ -1,11 +1,10 @@
+import { IconButton } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import CodeIcon from "@material-ui/icons/Code";
@@ -13,6 +12,8 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Register from "../../features/Auth/components/Register";
 import "./styles.scss";
+import CloseIcon from '@material-ui/icons/Close';
+import Login from "../../features/Auth/components/Login";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,14 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "#fff",
   },
+  
+  closeButton: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1),
+    color: theme.palette.grey[500],
+    zIndex: 1
+  }
 }));
 
 export default function Header() {
@@ -77,14 +86,14 @@ export default function Header() {
         disableBackdropClick
         disableEscapeKeyDown
       >
+
+        <IconButton className={classes.closeButton} onClick={handleClose}>
+          <CloseIcon />
+        </IconButton>
         <DialogContent>
-          <Register />
+          {/* <Register closeDialog={handleClose} /> */}
+          <Login closeDialog={handleClose} />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Hủy bỏ
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );
