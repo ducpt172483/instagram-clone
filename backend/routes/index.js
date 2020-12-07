@@ -4,7 +4,7 @@ const postRouter = require('./postRouter');
 function route(app) {
 
     app.use('/auth', authRouter);
-    app.use('/post', postRouter);
+    app.use('/posts', postRouter);
 
 }
 

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const {ObjectId} = mongoose.Schema.Types;
+const {
+    ObjectId
+} = mongoose.Schema.Types;
 
 const postSchema = new mongoose.Schema({
     title: {
@@ -18,6 +20,8 @@ const postSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'User'
     }
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Post', postSchema);

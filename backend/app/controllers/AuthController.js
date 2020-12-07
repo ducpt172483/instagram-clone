@@ -52,9 +52,12 @@ class AuthController {
 
     // [POST] /auth/signin
     async signin(req, res, next) {
-        let { email, password } = req.body;
+        let {
+            email,
+            password
+        } = req.body;
 
-        if(!email || !password) {
+        if (!email || !password) {
             return next(createError(400, 'Vui lòng nhập email/password'));
         }
 
@@ -69,9 +72,14 @@ class AuthController {
 
             const isMatch = await bcrypt.compare(password, savedUser.password);
 
-            if(isMatch) {
-                const accessToken = await jwt.sign({ _id: savedUser._id }, process.env.JWT_SECRET_FOR_ACCESS_TOKEN);
-                res.json({accessToken})
+            if (isMatch) {
+                const accessToken = await jwt.sign({
+                    _id: savedUser._id
+                }, process.env.JWT_SECRET_FOR_ACCESS_TOKEN);
+                res.json({
+                    access_token: accessToken,
+                    user: savedUser
+                })
             } else {
                 return next(createError(400, 'Email hoặc mật khẩu không chính xác.'));
             }

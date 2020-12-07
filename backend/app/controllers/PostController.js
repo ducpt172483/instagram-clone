@@ -31,12 +31,12 @@ class PostController {
         }
     }
 
-    // [GET] /post
+    // [GET] /posts
     async show(req, res, next) {
         try {
             const postList = await Post.find().populate('postedBy', '_id name');
 
-            res.json({postList});
+            res.json({data: postList});
         } catch (error) {
             return next(createError(500, error));
         }
