@@ -3,15 +3,16 @@ const Post = require('../models/Post');
 
 class PostController {
 
-    // [POST] /createPost
+    // [POST] /posts
     async create(req, res, next) {
         try {
             const {
                 title,
-                body
+                body,
+                photo
             } = req.body;
 
-            if (!title || !body) {
+            if (!title || !body || !photo) {
                 return next(createError(422, 'Vui lòng nhập tiêu đề và nội dung.'));
             }
 
@@ -20,6 +21,7 @@ class PostController {
             const newPost = new Post({
                 title,
                 body,
+                photo,
                 postedBy: req.user
             });
 

@@ -1,3 +1,4 @@
+const { TooManyRequests } = require('http-errors');
 const mongoose = require('mongoose');
 const {
     ObjectId
@@ -14,7 +15,7 @@ const postSchema = new mongoose.Schema({
     },
     photo: {
         type: String,
-        default: 'No photo'
+        require: true
     },
     postedBy: {
         type: ObjectId,

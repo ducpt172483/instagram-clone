@@ -4,9 +4,9 @@ import React from "react";
 import PostFeature from "../../features/Post";
 
 
-Home.propTypes = {};
+HomePage.propTypes = {};
 
-function Home(props) {
+function HomePage(props) {
   return (
     <div>
       <CssBaseline />
@@ -17,4 +17,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default HomePage;

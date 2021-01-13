@@ -1,15 +1,15 @@
 import React from 'react';
 
-Profile.propTypes = {
+ProfilePage.propTypes = {
     
 };
 
-function Profile(props) {
+function ProfilePage(props) {
     return (
         <div>
-            Profile
+            ProfilePage
         </div>
     );
 }
 
-export default Profile;
+export default ProfilePage;

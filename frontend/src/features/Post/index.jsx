@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
-import postApi from "../../api/postApi";
-import PostList from "./components/PostList";
+import React, { useEffect } from "react";
 
 PostFeature.propTypes = {};
 
 function PostFeature(props) {
-  const [postList, setPostList] = useState([]);
+  // const [postList, setPostList] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const postList = await postApi.getAll();
+      // const postList = await postApi.getAll();
       // console.log(postList.data);
 
-      setPostList(postList.data);
+      // setPostList(postList.data);
     };
 
     fetchPosts();
@@ -20,7 +18,7 @@ function PostFeature(props) {
 
   return (
     <div>
-      <PostList postList={postList} />
+      {/* <PostList postList={postList} /> */}
     </div>
   );
 }
